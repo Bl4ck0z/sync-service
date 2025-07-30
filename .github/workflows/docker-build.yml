@@ -6,11 +6,7 @@ on:
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ main ]
-<<<<<<< HEAD
   workflow_dispatch:
-=======
-  workflow_dispatch:  # Allow manual trigger
->>>>>>> 3a8f477 (Fix .gitignore: allow .github/workflows for GitHub Actions)
 
 env:
   REGISTRY: ghcr.io
@@ -63,8 +59,4 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
-<<<<<<< HEAD
         cache-to: type=gha,mode=max
-=======
-        cache-to: type=gha,mode=max
->>>>>>> 3a8f477 (Fix .gitignore: allow .github/workflows for GitHub Actions)

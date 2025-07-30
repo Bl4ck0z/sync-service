@@ -26,7 +26,7 @@ Sync Service is a high-performance, real-time data synchronization system that t
 
 ```mermaid
 graph LR
-    A[SQL Server 2016] -->|Query incremental| B[Producer Process]
+    A[SQL Server] -->|Query incremental| B[Producer Process]
     B -->|Push records| C[Redis Queue]
     C -->|Pop batches| D[Consumer Process]
     D -->|UPSERT| E[PostgreSQL]

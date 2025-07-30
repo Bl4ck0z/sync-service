@@ -1,7 +1,7 @@
 ---
 services:
   sync-service:
-    build: .
+    image: ghcr.io/bl4ck0z/sync-service:latest
     container_name: sync-service
     restart: unless-stopped
     security_opt: [no-new-privileges:true]

@@ -1,0 +1,39 @@
+---
+services:
+  sync-service:
+    build: .
+    container_name: sync-service
+    restart: unless-stopped
+    security_opt: [no-new-privileges:true]
+    networks: [proxy]
+    environment:
+      TZ: America/Santo_Domingo
+      MSSQL_HOST: ${MSSQL_HOST}
+      MSSQL_PORT: ${MSSQL_PORT}
+      MSSQL_DATABASE: ${MSSQL_DATABASE}
+      MSSQL_USER: ${MSSQL_USER}
+      MSSQL_PASSWORD: ${MSSQL_PASSWORD}
+      MSSQL_VIEW: ${MSSQL_VIEW}
+      PG_HOST: ${PG_HOST}
+      PG_PORT: ${PG_PORT}
+      PG_DATABASE: ${PG_DATABASE}
+      PG_USER: ${PG_USER}
+      PG_PASSWORD: ${PG_PASSWORD}
+      PG_TABLE_VISTA: ${PG_TABLE_VISTA}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_DB: ${REDIS_DB}
+      SYNC_INTERVAL: ${SYNC_INTERVAL}
+      BATCH_SIZE: ${BATCH_SIZE}
+      STATS_INTERVAL: ${STATS_INTERVAL}
+    volumes:
+      - sync_logs:/app/logs
+
+volumes:
+  sync_logs:
+    external: true
+
+networks:
+  proxy:
+    external: true
